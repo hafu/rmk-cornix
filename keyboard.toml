@@ -57,6 +57,7 @@ morse_max_num = 32
 max_patterns_per_key = 8
 combo_max_num = 32
 fork_max_num = 16
+mouse_key_interval = 5
 
 [host]
 vial_enabled = true
@@ -89,12 +90,66 @@ matrix_map = """
 [[layer]]
 name = "base_layer"
 keys = """
-ESC     Q     W     E     R      T                Y     U      I      O     P          BSPC
-TAB     A     S     D     F      G                H     J      K      L     SEMICOLON  QUOT
-LSHIFT  Z     X     C     V      B    NO    NO    N     M      COMMA  DOT   SLASH      RSHIFT
-LCTRL   LGUI  LALT  NO    SPACE  NO               NO    ENTER  NO     RALT  MENU       RCTRL
+esc     Q                 W                 F                   P                   B                                     J               L                   U                  Y                 quot                 no
+no      MT(A, RAlt, HRM)  MT(R, LGui, HRM)  MT(S, LCtrl, HRM )  MT(T, LShift, HRM)  G                                     M               MT(N, RShift, HRM)  MT(E, RCtrl, HRM)  MT(I, RGui, HRM)  MT(O, RAlt, HRM)     no
+LShift  MT(Z, LAlt, HRM)  X                 C                   D                   V               no                no  K               H                   Comma              Dot               MT(slsh, LAlt, HRM)  RShift
+no      no                no                LT(3, esc, FH)      LT(1, spc, FH)      LT(2, Tab, FH)                        LT(5, ent, FH)  LT(4, bspc, FH)     LT(6, del, FH)     no                no                   no
 """
 encoders = [["PgDn", "PgUp"], ["AudioVolUp", "AudioVolDown"]]
+
+[[layer]]
+name = "nav"
+keys = """
+_  _  _  _  DF(0)  _               agin   pste  Copy  Cut   Undo  no
+_  _  _  _  _      _               cword  Left  Down  Up    rght  no
+_  _  _  _  DF(1)  _  _        no  ins    Home  pgdn  pgup  End   no
+_  _  _  _  _      _               ent    bspc  del   no    no    no
+"""
+
+[[layer]]
+name = "mouse"
+keys = """
+_  _  _  _  DF(0)  _               agin     pste     Copy     Cut      Undo      no
+_  _  _  _  _      _               no       ms_left  ms_down  ms_up    ms_right  no
+_  _  _  _  DF(2)  _  _        no  no       ms_whll  ms_whld  ms_whlu  ms_whlr   no
+_  _  _  _  _      _               ms_btn3  ms_btn1  ms_btn2  no       no        no
+"""
+
+[[layer]]
+name = "media"
+keys = """
+_  _  _  _  DF(0)  _               no    no    no    no    no    no
+_  _  _  _  _      _               no    mprv  vold  volu  mnxt  no
+_  _  _  _  DF(3)  _  _        no  no    F13   F14   slep  pwr   no
+_  _  _  _  _      _               mstp  mply  mute  no    no    no
+"""
+
+[[layer]]
+name = "num"
+keys = """
+no  lbrc  7   8     9  rbrc               _  DF(0)  _  _  _  _
+no  scln  4   5     6  eql                _  _      _  _  _  _
+no  grv   1   2     3  bsls  no        _  _  DF(4)  _  _  _  _
+no  no    no  comm  0  mins               _  _      _  _  _  _
+"""
+
+[[layer]]
+name = "sym"
+keys = """
+no  shifted(lbrc)  shifted(7)  shifted(8)  shifted(9)  shifted(rbrc)               _  DF(0)  _  _  _  _
+no  shifted(scln)  shifted(4)  shifted(5)  shifted(6)  shifted(eql)                _  _      _  _  _  _
+no  shifted(grv)   shifted(1)  shifted(2)  shifted(3)  shifted(bsls)  no        _  _  DF(5)  _  _  _  _
+no  no             no          shifted(9)  shifted(0)  shifted(mins)               _  _      _  _  _  _
+"""
+
+[[layer]]
+name = "fun"
+keys = """
+no     F12  F7  F8    F9   pscr               _  DF(0)  _  _  _  _
+User0  F11  F4  F5    F6   scrl               _  _      _  _  _  _
+User1  F10  F1  F2    F3   paus  no        _  _  DF(6)  _  _  _  _
+User2  no   no  menu  spc  esc                _  _      _  _  _  _
+"""
 
 [behavior.one_shot]
 timeout = "3s"
@@ -103,8 +158,13 @@ timeout = "3s"
 timeout = "50ms"
 combos = []
 
-[behavior.morse]
-enable_flow_tap = false
-hold_on_other_press = true
-hold_timeout = "250ms"
-gap_timeout = "250ms"
+# [behavior.morse]
+# hold_timeout = "250ms"
+# gap_timeout = "250ms"
+
+# https://rmk.rs/docs/configuration/behavior.html#per-key-profiles-for-morse-tapdance-tap-hold-fine-tuning
+[behavior.morse.profiles]
+# # This profile is recommended on the home row, when enable_flow_tap = true, and the hold action activates a layer or acts as a modifier (aka home row mod)
+HRM = { unilateral_tap = true, permissive_hold = true, hold_timeout = "250ms", gap_timeout = "250ms" }
+# # This profile is recommended when the hold action activates a layer or acts as a modifier (without HRM) (for example thumb keys)
+FH = { hold_on_other_press = true, unilateral_tap = false, hold_timeout = "200ms", gap_timeout = "200ms" }
