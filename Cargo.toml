@@ -8,11 +8,14 @@ edition = "2021"
 license = "MIT OR Apache-2.0"
 
 [dependencies]
-rmk = { version = "0.8", features = [
+rmk = { version = "0.8", default-features = false, features = [
     "nrf52840_ble",
     "split",
     "async_matrix",
     "adafruit_bl",
+    "storage",
+    "vial",
+    "usb_log",
 ] }
 nrf-sdc = { git = "https://github.com/alexmoon/nrf-sdc", rev = "11d5c3c", features = [
     "defmt",
