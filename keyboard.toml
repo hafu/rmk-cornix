@@ -58,6 +58,7 @@ max_patterns_per_key = 8
 combo_max_num = 32
 fork_max_num = 16
 mouse_key_interval = 5
+split_central_sleep_timeout_seconds = 900
 
 [host]
 vial_enabled = true
