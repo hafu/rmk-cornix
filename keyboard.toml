@@ -101,7 +101,7 @@ encoders = [["PgDn", "PgUp"], ["AudioVolUp", "AudioVolDown"]]
 [[layer]]
 name = "nav"
 keys = """
-_  _  _  _  DF(0)  _               agin   pste  Copy  Cut   Undo  no
+_  _  _  _  DF(0)  DF(7)           agin   pste  Copy  Cut   Undo  no
 _  _  _  _  _      _               cword  Left  Down  Up    rght  no
 _  _  _  _  DF(1)  _  _        no  ins    Home  pgdn  pgup  End   no
 _  _  _  _  _      _               ent    bspc  del   no    no    no
@@ -110,7 +110,7 @@ _  _  _  _  _      _               ent    bspc  del   no    no    no
 [[layer]]
 name = "mouse"
 keys = """
-_  _  _  _  DF(0)  _               agin     pste     Copy     Cut      Undo      no
+_  _  _  _  DF(0)  DF(7)           agin     pste     Copy     Cut      Undo      no
 _  _  _  _  _      _               no       ms_left  ms_down  ms_up    ms_right  no
 _  _  _  _  DF(2)  _  _        no  no       ms_whll  ms_whld  ms_whlu  ms_whlr   no
 _  _  _  _  _      _               ms_btn3  ms_btn1  ms_btn2  no       no        no
@@ -119,7 +119,7 @@ _  _  _  _  _      _               ms_btn3  ms_btn1  ms_btn2  no       no       
 [[layer]]
 name = "media"
 keys = """
-_  _  _  _  DF(0)  _               no    no    no    no    no    no
+_  _  _  _  DF(0)  DF(7)           no    no    no    no    no    no
 _  _  _  _  _      _               no    mprv  vold  volu  mnxt  no
 _  _  _  _  DF(3)  _  _        no  no    F13   F14   slep  pwr   no
 _  _  _  _  _      _               mstp  mply  mute  no    no    no
@@ -128,7 +128,7 @@ _  _  _  _  _      _               mstp  mply  mute  no    no    no
 [[layer]]
 name = "num"
 keys = """
-no  lbrc  7   8     9  rbrc               _  DF(0)  _  _  _  _
+no  lbrc  7   8     9  rbrc           DF(7)  DF(0)  _  _  _  _
 no  scln  4   5     6  eql                _  _      _  _  _  _
 no  grv   1   2     3  bsls  no        _  _  DF(4)  _  _  _  _
 no  no    no  comm  0  mins               _  _      _  _  _  _
@@ -137,7 +137,7 @@ no  no    no  comm  0  mins               _  _      _  _  _  _
 [[layer]]
 name = "sym"
 keys = """
-no  shifted(lbrc)  shifted(7)  shifted(8)  shifted(9)  shifted(rbrc)               _  DF(0)  _  _  _  _
+no  shifted(lbrc)  shifted(7)  shifted(8)  shifted(9)  shifted(rbrc)           DF(7)  DF(0)  _  _  _  _
 no  shifted(scln)  shifted(4)  shifted(5)  shifted(6)  shifted(eql)                _  _      _  _  _  _
 no  shifted(grv)   shifted(1)  shifted(2)  shifted(3)  shifted(bsls)  no        _  _  DF(5)  _  _  _  _
 no  no             no          shifted(9)  shifted(0)  shifted(mins)               _  _      _  _  _  _
@@ -146,10 +146,19 @@ no  no             no          shifted(9)  shifted(0)  shifted(mins)            
 [[layer]]
 name = "fun"
 keys = """
-no     F12  F7  F8    F9   pscr               _  DF(0)  _  _  _  _
+no     F12  F7  F8    F9   pscr               DF(7)  DF(0)  _  _  _  _
 User0  F11  F4  F5    F6   scrl               _  _      _  _  _  _
 User1  F10  F1  F2    F3   paus  no        _  _  DF(6)  _  _  _  _
 User2  no   no  menu  spc  esc                _  _      _  _  _  _
+"""
+
+[[layer]]
+name = "game"
+keys = """
+no      Q  W  E    R    T                  _  DF(0)  _  _  _  _
+no      A  S  D    F    G                  _  _      _  _  _  _
+LShift  Z  X  C    V    B    no         _  _  DF(7)  _  _  _  _
+LCtrl   _  _  tab  spc  esc                _  _      _
 """
 
 [behavior.one_shot]
